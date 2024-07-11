@@ -1,22 +1,41 @@
-.about {
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .about {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 50px 0;
-    max-width: 1400px;
+    max-width: 90%;
     margin: 0 auto;
-}
-
-.about h1 {
-    font-size: 72px;
-    margin-bottom: 20px;
+  }
+  
+  .about-heading {
+    display: flex;
+    align-items: center;
+    height: 200px;
+    background-color: #333333;
+    margin-bottom: 50px;
+  }
+  
+  .about-heading h2 {
     font-family: 'Prata', Georgia, "Times New Roman", serif;
+    font-size: 72px;
+    color: #FFFFFF;
+    line-height: 1.2em;
     font-weight: lighter;
-    color: #333;
-}
-
-.about-content {
+    margin-left: 200px;
+  }
+  
+  .about-content {
     display: flex;
     flex-wrap: wrap;
     width: 80%;
@@ -25,31 +44,31 @@
     max-width: 1400px;
     padding: 0 2rem;
     gap: 4rem;
-}
-
-.about-col {
+  }
+  
+  .about-col {
     flex: 1;
     overflow: hidden;
     min-width: 300px;
     align-self: flex-start;
-}
-
-.about-col img {
+  }
+  
+  .about-col img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
-}
-
-.about-col h2{
+  }
+  
+  .about-col h2 {
     font-family: 'Prata', Georgia, "Times New Roman", serif;
     font-size: 52px;
     line-height: 1.2em;
     font-weight: lighter;
     color: #333;
     margin: 1rem 0;
-}
-
-.about-col h4 {
+  }
+  
+  .about-col h4 {
     font-family: 'Wix Madefor Display', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
@@ -58,10 +77,37 @@
     line-height: 1.4em;
     margin-bottom: 1rem;
     color: #333;
-}
-
-.about-col p {
+  }
+  
+  .about-col p {
     line-height: 1.6em;
     color: #7c7c7c;
     margin-top: 1rem;
-}
+  }
+  
+  @media screen and (max-width: 768px) {
+    .about {
+      margin: 0;
+    }
+    
+    .about-heading {
+      height: 120px;
+      margin: 0;
+    }
+    
+    .about-heading h2 {
+      font-size: 48px;
+      margin-left: 50px;
+    }
+    
+    .about-content {
+      margin: 3rem auto;
+      width: 90%;
+    }
+  }
+  
+  .about-content {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  

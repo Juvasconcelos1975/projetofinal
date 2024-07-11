@@ -20,7 +20,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 90%;
     padding: 0 2rem;
     margin-bottom: 50px;
 }
@@ -34,7 +34,7 @@
 }
 
 .info-top-row {
-    box-shadow: 0 0 20px rgba(212, 167, 58, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     width: 100%;
 }
@@ -78,8 +78,8 @@
 .info-email {
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(212, 167, 58, 0.1);
-    flex-basis: calc(50% - 50px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(50% - 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,8 +105,8 @@
 .info-phone {
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(212, 167, 58, 0.1);
-    flex-basis: calc(50% - 50px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(50% - 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,7 +134,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 20px rgba(212, 167, 58, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     max-height: 392px;
 }
 
@@ -231,6 +231,9 @@
         font-size: 48px;
         margin-left: 50px;
     }
+    .info-bottom-row {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 480px) {
@@ -245,4 +248,54 @@
         font-size: 28px;
         margin-left: 10px;
     }
+}
+
+.map {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+
+.map h2 {
+    font-family: 'Prata', Georgia, "Times New Roman", serif;
+    font-size: 36px;
+    color: #333333;
+    line-height: 1.2em;
+    font-weight: lighter;
+    margin-bottom: 20px;
+}
+
+.map iframe {
+    width: 90%;
+    height: 400px;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid #d4a73a;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Scroll animation */
+
+.contact-container {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.contact-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.map {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.map.visible {
+  opacity: 1;
 }

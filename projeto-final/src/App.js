@@ -6,29 +6,27 @@ import Shop from './Shop/Shop';
 import About from './About/About';
 import Contact from './Contact/Contact';
 import Footer from './Footer/Footer';
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 function App() {
   return (
-    <Router> 
+    <Router>
+      <ScrollToTop />
       <div className="App">
         <Navbar />
-        <div className='content'>
+        <div className="content">
           <Routes>
-            <Route path="/" exact element={<Main />} />
+            <Route path="/" element={<Main />} />
             <Route path="/about" element={<About />} />
             <Route path="/shop" element={<Shop />} />
-            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
         <Footer />
       </div>
-    </Router> 
+    </Router>
   );
 }
-
-
 
 export default App;

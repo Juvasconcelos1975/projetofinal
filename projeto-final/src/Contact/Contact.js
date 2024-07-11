@@ -1,22 +1,59 @@
 import './Contact.css';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 
 function Contact() {
+  const contactContainerRef = useRef(null);
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    if (contactContainerRef.current) {
+      observer.observe(contactContainerRef.current);
+    }
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
+    return () => {
+      if (contactContainerRef.current) {
+        observer.unobserve(contactContainerRef.current);
+      }
+      if (mapRef.current) {
+        observer.unobserve(mapRef.current);
+      }
+    };
+  }, []);
+
   return (
 		<section id='contact'>
 			<div className='contact-heading'>
 				<h2>Contact Me</h2>
 			</div>
 
-			<div className='contact-container'>
+			<div ref={contactContainerRef} className='contact-container'>
 				<div className='contact-info'>
 					<div className='info-top-row'>
 						<div className='info-address'>
 							<div className='contact-icon'>
-								<LocationOnIcon></LocationOnIcon>
+								<LocationOnIcon />
 							</div>
 							<h3>Our Address</h3>
 							<p>123, XYZ Street, ABC City, 12345</p>
@@ -25,7 +62,7 @@ function Contact() {
 					<div className='info-bottom-row'>
 						<div className='info-email'>
 							<div className='contact-icon'>
-								<EmailIcon></EmailIcon>
+								<EmailIcon />
 							</div>
 							<h3>Email Us</h3>
 							<div className='emails'>
@@ -35,7 +72,7 @@ function Contact() {
 						</div>
 						<div className='info-phone'>
 							<div className='contact-icon'>
-								<PhoneIcon></PhoneIcon>
+								<PhoneIcon />
 							</div>
 							<h3>Call Us</h3>
 							<div className='phones'>
@@ -63,6 +100,17 @@ function Contact() {
 						<button type='submit'>Send Message</button>
 					</form>
 				</div>
+			</div>
+
+			<div ref={mapRef} className='map'>
+				<h2>Find Us Here</h2>
+				<iframe
+					src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.854534601905!2d-9.15088062419711!3d38.74410017175725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19339ff3d2e003%3A0x30801d02c31fc003!2sFLAG%20LISBOA!5e0!3m2!1spt-PT!2spt!4v1720646854672!5m2!1spt-PT!2spt'
+					width='600'
+					height='450'
+					loading='lazy'
+					title='Google Maps'
+				></iframe>
 			</div>
 		</section>
 	);
